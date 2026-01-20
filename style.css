@@ -1,0 +1,246 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+
+
+
+:root {
+    /* ===== Dark Neutral Base ===== */
+    --bg: #0e0f11;
+    /* page background */
+    --surface: #15171a;
+    /* main containers */
+    --surface-2: #1b1e22;
+    /* cards / elevated */
+    --surface-3: #22262b;
+    /* hover / active */
+
+    /* ===== Text ===== */
+    --text: #e8eaed;
+    /* primary text */
+    --text-2: #c7cbd1;
+    /* secondary text */
+    --muted: #9aa3ad;
+    /* muted text */
+    --disabled: #6b7280;
+
+    /* ===== Lines / Borders ===== */
+    --border: #2a2f36;
+    --border-2: #343b45;
+
+    /* ===== Accent (warm, not blue) ===== */
+    --accent: #ad4a73;
+    /* “golden sand” */
+    --accent-2: #8dd6c2;
+    /* subtle mint (optional) */
+    --danger: #ff6b6b;
+    --warning: #f6c177;
+    /* warm */
+    --success: #8bd49c;
+
+    /* ===== Effects ===== */
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.35);
+
+    /* ===== Radius / Spacing ===== */
+    --radius: 14px;
+    --radius-sm: 10px;
+
+    /* ===== Typography ===== */
+    --font: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+
+}
+
+body {
+    background-color: var(--bg);
+    color: white;
+}
+
+.layout {
+    min-height: 100vh;
+    display: grid;
+
+    grid-template-columns: 350px 1fr;
+    /* sidebar | content */
+    grid-template-rows: 160px 1fr;
+    /* header | main */
+
+    grid-template-areas:
+        "sidebar header"
+        "sidebar main";
+}
+
+.sidebar {
+    background-color: var(--border);
+
+    grid-area: sidebar;
+
+    padding: 20px 30px;
+}
+
+
+.header {
+    background-color: var(--border-2);
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 16px;
+    align-items: center;
+    padding: 20px 28px;
+}
+
+
+.main {
+    grid-area: main;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+
+    padding: 30px 40px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 40px;
+
+  padding: 30px 30px;
+
+}
+
+.rightbar {
+    display: grid;
+
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;
+    padding: 30px 30px;
+}
+.card {
+  position: relative;
+  background: var(--surface-2);
+  min-height: 250px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px 18px 22px;
+
+  /* Layout */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 10px;
+
+  box-shadow: var(--shadow-soft);
+}
+
+/* Left accent strip */
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  border-radius: var(--radius) 0 0 var(--radius);
+  background: var(--accent);
+}
+
+.card__title {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.card__desc {
+  margin: 0;
+  color: var(--text-2);
+  max-width: 55ch; /* optional, lässt Text nicer aussehen */
+}
+
+.card__actions {
+  display: flex;
+  gap: 14px;
+  justify-content: end;  /* rechtsbündig */
+  align-items: center;
+  padding-top: 6px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-2);
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: var(--surface-3);
+  border-color: var(--border-2);
+  color: var(--text);
+}
+
+
+
+/* debug */
+/* .sidebar {
+    outline: 2px solid #c7a36a44;
+}
+
+.header {
+    outline: 2px solid #8dd6c244;
+}
+
+.main {
+    outline: 2px solid #ffffff22;
+}
+
+.projects {
+    outline: 2px dashed #ffffff22;
+}
+
+.rightbar {
+    outline: 2px dashed #ffffff22;
+}
+
+; */
